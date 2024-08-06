@@ -39,7 +39,7 @@ public class StudentController {
 			Student savedStudent = studentService.saveStudent(student);
 			if (savedStudent != null) {
 				return new ResponseEntity<ResponseStructure<Student>>(
-						new ResponseStructure<Student>("Student Added Successfully", savedStudent),
+						new ResponseStructure<Student>("Student Added successfully", savedStudent),
 						HttpStatus.ACCEPTED);
 			}
 			return new ResponseEntity<ResponseStructure<Student>>(
@@ -58,7 +58,7 @@ public class StudentController {
     public ResponseEntity<?> getAllStudents() {
         List<Student> students = studentService.getAllStudents();
         
-       if (!students.isEmpty()) {
+       if (!students.isEmpty() && students.size() >0) {
 		return new ResponseEntity<ResponseStructure<Student>>
 		(new ResponseStructure<Student>("All Student Data found", students),HttpStatus.FOUND);
 	}
@@ -72,7 +72,7 @@ public class StudentController {
 		 
 		 if (student!= null) {
              return new ResponseEntity<ResponseStructure<Student>>
-             (new ResponseStructure<Student>("Student Data Found Succeefully", student),HttpStatus.FOUND);
+             (new ResponseStructure<Student>("Student Data Found successfully", student),HttpStatus.FOUND);
              }
 		 return new ResponseEntity<ResponseStructure<Student>>
          (new ResponseStructure<Student>("Student Not Found ....! ", student),HttpStatus.FOUND);
@@ -84,7 +84,7 @@ public class StudentController {
 		Student deleteStudent = studentService.deleteStudent(id);
 		if(deleteStudent != null) {
 			return new ResponseEntity<ResponseStructure<Student>>
-				(new ResponseStructure<Student>("Student Data Deleted Sccussfully", deleteStudent),HttpStatus.OK);
+				(new ResponseStructure<Student>("Student Data Deleted successfully", deleteStudent),HttpStatus.OK);
 		}
 		return new ResponseEntity<ResponseStructure<Student>>
 		(new ResponseStructure<Student>("Student Data Not Found", deleteStudent),HttpStatus.NOT_FOUND);

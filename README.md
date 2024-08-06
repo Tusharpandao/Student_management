@@ -16,8 +16,5 @@ A Spring Boot project for managing students, subjects, and enrollments, with JWT
 4. Build the project: `mvn clean install`.
 5. Run the application: `mvn spring-boot:run`.
 
-### API Endpoints
-
-* `/api/auth/login` (POST): Authenticate and get a JWT token.
-* `/api/students` (GET/POST): Get all students (admin) / Create a student (admin).
-* ... (add other endpoints)
+* API TESTING IS ALSO DONE USING POSTMAN
+Student Management.postman_collection.json FILE IS ALSO ATTACHED

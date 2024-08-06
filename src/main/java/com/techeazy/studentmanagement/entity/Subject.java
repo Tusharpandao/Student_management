@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,7 +21,7 @@ public class Subject {
     private Long id;
     private String name;
     
-    @ManyToMany(mappedBy = "subjects")
+    @ManyToMany(mappedBy = "subjects", cascade = CascadeType.ALL)
 //    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     @JsonIgnore
     private List<Student> students ;
