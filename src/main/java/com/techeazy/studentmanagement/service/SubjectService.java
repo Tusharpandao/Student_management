@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.techeazy.studentmanagement.entity.Student;
 import com.techeazy.studentmanagement.entity.Subject;
 import com.techeazy.studentmanagement.repository.SubjectRepository;
 
@@ -40,15 +41,23 @@ public class SubjectService {
 		}
 
 		public Subject deleteSubject(Long id) {
-		
-			Subject subject = subjectRepository.findById(id).orElse(null);
-			
-            if(subject!= null) {
-                subjectRepository.delete(subject);
-                return subject;
-            }	
-            return null;
-			
+		    Subject subject = subjectRepository.findById(id).orElse(null);
+
+		    if (subject != null) {
+		        // Remove the subject from each student's list of subjects
+		        for (Student student : subject.getStudents()) {
+		            student.getSubjects().remove(subject);
+		        }
+		        subjectRepository.delete(subject);
+		        return subject;
+		    }
+		    return null;
 		}
+
+		public Subject getSubjectById(Long id) {
+			
+			return subjectRepository.findById(id).orElse(null);
+		}
+
 
 }

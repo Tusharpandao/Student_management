@@ -37,6 +37,18 @@ public class SubjectController {
 				new ResponseStructure<Student>(" Subject Not Found ", subjects), HttpStatus.NOT_FOUND);
 
 	}
+	
+	@GetMapping("/{id}")
+    public ResponseEntity<?> getSubjectById(@PathVariable Long id) {
+		Subject subject = subjectService.getSubjectById(id);
+		
+        if (subject!= null) {
+             return new ResponseEntity<ResponseStructure<Subject>>
+             (new ResponseStructure<Subject>("Subject Found Successfully", subject), HttpStatus.FOUND);
+             }
+        return new ResponseEntity<ResponseStructure<Subject>>(
+                new ResponseStructure<Subject>("Subject Not Found ....! ", subject), HttpStatus.FOUND);
+	}
 
 	@PostMapping("/add")
 	public ResponseEntity<?> addSubjects(@RequestBody List<Subject> subject) {

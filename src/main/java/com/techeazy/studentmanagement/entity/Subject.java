@@ -21,8 +21,8 @@ public class Subject {
     private Long id;
     private String name;
     
-    @ManyToMany(mappedBy = "subjects", cascade = CascadeType.ALL)
-//    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+    @ManyToMany(mappedBy = "subjects", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JsonIgnore
-    private List<Student> students ;
+    private List<Student> students;
 }

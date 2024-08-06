@@ -30,7 +30,7 @@ public class Student {
 	
 	private String address;
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
         name = "student_subject",
         joinColumns = @JoinColumn(name = "student_id"),
