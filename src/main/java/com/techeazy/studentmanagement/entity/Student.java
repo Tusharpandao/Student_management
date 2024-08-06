@@ -3,6 +3,7 @@ package com.techeazy.studentmanagement.entity;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,8 +18,17 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String address;
+ 
+    @Column(nullable = false)
+	private String name;
+	@Column(nullable = false, unique = true)
+	private String email;
+	@Column(nullable = false, unique = true)
+	private long mobile;
+	@Column(nullable = false)
+	private String password;
+	
+	private String address;
     
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
