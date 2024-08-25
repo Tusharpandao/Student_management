@@ -8,7 +8,9 @@ import com.techeazy.studentmanagement.entity.Users;
 @Repository
 public interface UserRepo extends JpaRepository<Users, Integer>{
 
-	 Users findByUserName(String userName); 
+	 Users findByUserName(String userName);
+
+	
 
 }
  

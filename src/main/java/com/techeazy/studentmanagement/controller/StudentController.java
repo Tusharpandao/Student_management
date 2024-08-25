@@ -33,7 +33,7 @@ public class StudentController {
 		return text;
 	}
 
-	@PostMapping("/createStudent")
+	@PostMapping("/register")
 	public ResponseEntity<?> createStudent(@RequestBody Student student) {
 		try {
 			Student savedStudent = studentService.saveStudent(student);
